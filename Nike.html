@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Point</title>
+    <link rel="stylesheet" href="./style .css">
+    <link rel="icon" href="./img/logo.png" type="image/x-icon">
+</head>
+<body>
+        <header>
+        <img src="./img/logo.png" alt="" id="imggo">
+        <div class="header">
+            <a  class="aa" id="textnike">Nike</a>
+            <a  class="aa" id="textlining">Li-Ning</a>
+            <a  class="aa" id="textAdidas">Adidas</a>
+
+        </div>
+        <span><ion-icon name="cart-outline" id="cart"></ion-icon></span>
+        <span><ion-icon name="person-outline"></ion-icon></span>
+    </header>
+    <hr>
+    <section class="sectionNike">
+    <div class="Nike1">
+        <img src="./img/nike1.jpg" alt="" class="Nike1Air1">
+        <h1>Nike Air Force 1 Mid</h1>
+        <h1 class="h1nike">3000 сом</h1>
+        <button class="btnnike" data-price="3000" data-name="Nike Air Force 1 Mid">В корзину</button>
+    </div>
+    <div class="Nike1">
+        <img src="./img/dank.jpg" alt="" class="Nike1Air1">
+        <h1>Nike Dunk</h1>
+        <h1 class="h1nike">3000 сом</h1>
+        <button class="btnnike" data-price="3000" data-name="Nike Dunk">В корзину</button>
+    </div>
+    <div class="Nike1">
+        <img src="./img/ощвфт.jpg" alt="" class="Nike1Air1">
+        <h1>Jordan 1</h1>
+        <h1 class="h1nike">3000 сом</h1>
+        <button class="btnnike" data-price="3000" data-name="Jordan 1">В корзину</button>
+    </div>
+    <div class="Nike1">
+        <img src="./img/gray.jpg" alt="" class="Nike1Air1">
+        <h1>Nike V2K Run</h1>
+        <h1 class="h1nike">3000 сом</h1>
+        <button class="btnnike" data-price="3000" data-name="Nike V2K Run">В корзину</button>
+    </div>
+    <div class="Nike1">
+        <img src="./img/hike cosmos.jpg" alt="" class="Nike1Air1">
+        <h1>Nike ReactX</h1>
+        <h1 class="h1nike">3000 сом</h1>
+        <button class="btnnike" data-price="3000" data-name="Nike ReactX">В корзину</button>
+    </div>
+    </section>
+
+<div id="cart-modal" class="cart-sidebar">
+    <div class="cart-header">
+        <h3>Мои покупки</h3>
+        <button id="close-cart" class="close-btn">×</button>
+    </div>
+    <ul id="cart-list" class="cart-items-list"></ul>
+    <div class="cart-footer">
+        <div class="total-price">Итого: <span id="cart-total">0</span> сом</div>
+        <button class="checkout-btn">Оформить заказ</button>
+    </div>
+</div>
+<div id="cart-overlay"></div>
+
+<script src="./index.js"></script>
+     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+     
+</body>
+</html>

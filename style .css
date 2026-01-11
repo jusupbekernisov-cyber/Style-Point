@@ -1,0 +1,568 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Monsterrat', sans-serif;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+* {
+    box-sizing: border-box; /* Это чтобы отступы не раздували блоки */
+}
+header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    padding: 0 50px; /* Отступы по краям всей шапки */
+    height: 90px;
+}
+header span {
+    margin-left: 30px;
+}
+
+header img {
+    cursor: pointer;
+    width: 85px;
+    flex-shrink: 0; /* Чтобы логотип не сжимался */
+}
+
+/* ЭТОТ БЛОК ТЕПЕРЬ ПРИЖИМАЕТ ВСЁ ВПРАВО */
+header .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 60px; /* Расстояние между ссылками */
+    
+    margin-left: auto; /* МАГИЯ: это толкает всё вправо */
+    margin-right: 0;   /* Убираем лишние отступы справа */
+}
+
+/* Если иконки корзины и профиля лежат вне блока .header, 
+   то им тоже нужно задать обертку или включить их в этот блок */
+
+/* Если у тебя иконки (корзина, человечек) лежат отдельно, 
+убедись, что они тоже внутри .header или добавь им margin-left: auto */
+
+/* АДАПТАЦИЯ ШАПКИ ДЛЯ ТЕЛЕФОНОВ (чтобы не улетало из-за 570px) */
+@media (max-width: 1450px) {
+    .header { margin-left: 100px; gap: 50px; }
+}
+@media (max-width: 850px) {
+    header { flex-direction: column; padding-bottom: 10px; }
+    .header { margin-left: 0; margin-right: 0; gap: 30px; margin-top: 10px; }
+}
+
+.aa {
+    cursor: pointer;
+    display: inline-block;    /* Обязательно, чтобы transform работал корректно */
+    position: relative;       /* Нужно для позиционирования линии внутри */
+    text-decoration: none;    /* Убираем стандартное подчеркивание браузера */
+    color: black;             /* Цвет текста */
+    font-size: 19px;          /* Размер как на вашем макете */
+    padding: 5px 0;           /* Небольшой отступ, чтобы линия не касалась букв */
+}
+
+/* Настройка линии (до наведения) */
+.aa::after {
+  content: '';              /* Позволяет блоку существовать */
+  position: absolute;       /* Линия будет двигаться внутри ссылки */
+  width: 100%;              /* Линия будет такой же ширины, как текст */
+  height: 3px;              /* Толщина линии */
+  bottom: 0;                /* Расположение в самом низу */
+  left: 0;
+  border-radius: 10px;
+  background-color: black;  /* Цвет линии */
+  
+  /* Магия анимации: */
+  transform: scaleX(0);      /* Сжимаем линию до 0 (невидима) */
+  transform-origin: center;  /* Точка роста — центр */
+  transition: transform 0.4s cubic-bezier(0.5, 1, 0.89, 1); /* Плавность */
+}
+
+/* Эффект при наведении курсора */
+.aa:hover::after {
+  transform: scaleX(1);     /* Растягиваем линию до 100% ширины */
+}
+
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 900px; /* Ширина слайдера */
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.slider-content {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Плавное движение */
+}
+
+.slide {
+    min-width: 100%;
+}
+
+.slide img {
+    width: 100%;
+    display: block;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.prev { left: 0; }
+.next { right: 0; }
+
+.dots-block {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.t-dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.t-dot.active { background-color: #333; }
+
+.sec3{
+    margin-top: 200px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap; /* Добавлено для адаптивности */
+}
+.sec3 .div1{
+    background-image: url(./img/nike.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 360px;
+    height: 500px;
+    border-radius: 15px;
+    position: relative;
+    transition: 0.6s;
+}
+.sec3 .div1:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 30px rgb(0, 0, 0);
+
+}
+.sec3 .div1:hover button{
+    background: black;
+    color: white;
+    transform: scale(1.1);
+}
+.sec3 .div1 button{
+    position: absolute;
+    left: 120px;
+    top: 400px;
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    font-size: 17px;
+    font-weight: 600;
+    background: #ffffff;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.sec3 .div2{
+    background-image: url(./img/lining.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 360px;
+    height: 500px;
+    border-radius: 15px;
+    position: relative;
+    transition: 0.6s;
+}
+.sec3 .div2:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 30px rgb(0, 0, 0);
+}
+.sec3 .div2:hover button{
+    background: black;
+    color: white;
+    transform: scale(1.1);
+}
+.sec3 .div2 button{
+    position: absolute;
+    left: 120px;
+    top: 400px;
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    font-size: 17px;
+    font-weight: 600;
+    background: #ffffff;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.sec3 .div3{
+    background-image: url(./img/adidas.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 360px;
+    height: 500px;
+    border-radius: 15px;
+    position: relative;
+    transition: 0.6s;
+}
+.sec3 .div3:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 30px rgb(0, 0, 0);
+}
+.sec3 .div3:hover button{
+    background: black;
+    color: white;
+    transform: scale(1.1);
+}
+.sec3 .div3 button{
+    position: absolute;
+    left: 120px;
+    top: 400px;
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    font-size: 17px;
+    font-weight: 600;
+    background: #ffffff;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.sectionNike{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    justify-content: center;
+    gap: 50px;
+    padding: 20px;
+}
+.sectionNike .Nike1{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+    animation: leftnike1 3s alternate ease-in-out;
+}
+.sectionNike .Nike1 .Nike1Air1{
+    width: 300px;
+    height: 300px;
+}
+.sectionNike .Nike1 .h1nike{
+    font-size: 20px;
+    font-weight: 400;
+}
+.sectionNike .Nike1 .btnnike{
+    width: 150px;
+    height: 40px;
+    border-radius: 50px;
+    background: #ffffff;
+    color: black;
+    transition: 0.5s;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.sectionNike .Nike1 .btnnike:hover{
+    background: black;
+    color: #ffffff;
+}
+
+/* АНИМАЦИИ (убедись, что они прописаны в твоем файле ниже) */
+@keyframes leftnike1 { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes leftnike2 { from { opacity: 0; transform: translateX(-70px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes leftnike3 { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- КОРЗИНА (SIDEBAR) --- */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -450px; /* Скрыта справа */
+    height: 100vh;
+    width: min(400px, 90%);
+    background: #fff;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); /* Плавный выезд */
+}
+
+.cart-sidebar.active {
+    right: 0; /* Появление */
+}
+
+/* Шапка корзины */
+.cart-header {
+    padding: 25px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #ccc;
+    transition: 0.3s;
+}
+
+.close-btn:hover { color: #000; }
+
+/* Список товаров */
+.cart-items-list {
+    flex-grow: 1;
+    padding: 20px 25px;
+    list-style: none;
+    overflow-y: auto;
+}
+
+.cart-items-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #f5f5f5;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* Правая часть строки товара (цена + кнопка) */
+.cart-item-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cart-item-price {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+/* Кнопка удаления (крестик) */
+.remove-btn {
+    background: #f0f0f0;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+    transition: 0.2s;
+}
+
+.remove-btn:hover {
+    background: #ff4d4d;
+    color: #fff;
+}
+
+/* Футер корзины */
+.cart-footer {
+    padding: 25px;
+    border-top: 2px solid #f9f9f9;
+}
+
+.total-price-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.total-label {
+    font-size: 20px;
+    color: #888;
+}
+
+#cart-total {
+    font-size: 32px; /* Крупный "Итого" */
+    font-weight: 900;
+    color: #000;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 18px;
+    background: #000;
+    color: #fff;
+    border: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.checkout-btn:hover { 
+    background: #ffffff; 
+    color: #000;
+    border: 1px solid black;
+}
+
+/* Анимация строк */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Затемнение фона */
+#cart-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(3px);
+    display: none;
+    z-index: 1500;
+}
+
+#cart-overlay.active { display: block; }
+
+/* --- СТИЛЬ СТРАНИЦЫ РЕГИСТРАЦИИ (lalal.html) --- */
+.reg-body {
+    background-color: #f7f7f7;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.reg-container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    animation: slideUp 0.6s ease-out; /* Анимация появления */
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.reg-container h2 {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+}
+
+#order-summary {
+    color: #777;
+    font-size: 15px;
+    margin-bottom: 30px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 10px;
+}
+
+/* Поля ввода */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.reg-container input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 0.3s;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.reg-container input:focus {
+    border-color: #000;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.05);
+}
+
+/* Кнопка заказать */
+.send-btn {
+    width: 100%;
+    padding: 18px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+    margin-top: 10px;
+}
+
+.send-btn:hover {
+    background: #333;
+    transform: scale(1.02);
+}
+
+.send-btn:active {
+    transform: scale(0.98);
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 25px;
+    color: #999;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #000;
+}
+h1,h2{
+    font-size:clamp(22px,5vw, 36px);
+}
